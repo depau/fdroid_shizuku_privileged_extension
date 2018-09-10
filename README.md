@@ -107,6 +107,26 @@ In order to have final, signed release versions that are ready for installing, a
     key.alias=release
     key.alias.password=mysecurekeypw
 
+
+## Supporting a different app
+
+It is possible to use Privileged Extension with any app.  To do that,
+make a "whitelabel" build of Privileged Extension that includes the
+_Application ID_, key fingerprint, and app name for the app that the
+custom build should support.  These are set by the script below, and
+should be committed to a fork git repo:
+
+```bash
+$ export ApplicationID=my.app
+$ export AppName=MyApp
+sed -i "s,org.fdroid.fdroid.privileged,$ApplicationID,g" \
+    create_ota.sh app/src/main/scripts/*
+$ sed -i "s,F-Droid,$AppName,g" \
+    create_ota.sh app/build.gradle app/src/main/scripts/* \
+    app/src/main/res/values*/strings.xml
+```
+
+
 ## Testing in the Emulator
 
 To test the priveleged extension in the emulator, one has to modify
