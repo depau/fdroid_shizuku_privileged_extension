@@ -26,7 +26,7 @@ import java.util.HashSet;
  * can access the Privileged Extension!
  * <ol>
  * <li>Get SHA-256 of certificate as lowercase without colons with
- * <code>keytool -list -printcert -jarfile com.example.apk | sed -n 's,SHA256:\s*\([A-F0-9:]*\),\1,p' | sed 's,:,,g'
+ * <code>keytool -printcert -jarfile com.example.apk | sed -n 's,SHA256:\s*\([A-F0-9:]*\),\1,p' | sed 's,:,,g'
  * | tr A-f a-f</code></li>
  * <li>Add here with Application ID</li>
  * </ol>
