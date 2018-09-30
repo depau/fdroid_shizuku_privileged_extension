@@ -90,11 +90,11 @@ update the extension after the OTA update ZIP has been flashed.
 
 Build a complete "update.zip" to flash to a device to install F-Droid and the Privileged Extension:
 
-    ./gradlew assembleUpdateZipFromBinariesDebug
+    ./create_ota.sh debug binaries
 
 Build an "update.zip" to flash to a device to install just the Privileged Extension:
 
-    ./gradlew assembleUpdateZipDebug
+    ./create_ota.sh debug
 
 Build the standlone APK using:
 
@@ -107,12 +107,32 @@ In order to have final, signed release versions that are ready for installing, a
     key.alias=release
     key.alias.password=mysecurekeypw
 
+
+## Supporting a different app
+
+It is possible to use Privileged Extension with any app.  To do that,
+make a "whitelabel" build of Privileged Extension that includes the
+_Application ID_, key fingerprint, and app name for the app that the
+custom build should support.  These are set by the script below, and
+should be committed to a fork git repo:
+
+```bash
+$ export ApplicationID=my.app
+$ export AppName=MyApp
+sed -i "s,org.fdroid.fdroid.privileged,$ApplicationID,g" \
+    create_ota.sh app/src/main/scripts/*
+$ sed -i "s,F-Droid,$AppName,g" \
+    create_ota.sh app/build.gradle app/src/main/scripts/* \
+    app/src/main/res/values*/strings.xml
+```
+
+
 ## Testing in the Emulator
 
 To test the priveleged extension in the emulator, one has to modify
-the system.img It is located under the Android SDK install path.  For
-example, here is the `android-23` (Marshmallow, 6.0) x86_64 image with
-Google APIs:
+the _system.img_ file. It is located under the Android SDK install
+path.  For example, here is the `android-23` (Marshmallow, 6.0) x86_64
+image with Google APIs:
 
 ```
 $ANDROID_HOME/system-images/android-23/google_apis/x86_64/system.img
@@ -122,6 +142,8 @@ To install it, first build the standalone APK, and then run these in
 the base directory of this git repo.  This copies the APK into the
 right place, and sets up the correct SELinux context.
 
+### _android-14_ through _android-25_
+
 ```console
 $ ./gradlew assembleDebug
 $ mkdir /tmp/system
@@ -130,8 +152,48 @@ $ sudo mkdir /tmp/system/priv-app/F-DroidPrivilegedExtension
 $ sudo cp app/build/outputs/apk/F-DroidPrivilegedExtension-debug.apk \
     /tmp/system/priv-app/F-DroidPrivilegedExtension/F-DroidPrivilegedExtension.apk
 $ sudo chcon -R --reference=/tmp/system/app/webview /tmp/system/priv-app/F-DroidPrivilegedExtension
+$ sudo umount /tmp/system
+```
+
+### _android-26_ and newer
+
+Starting with _android-26_, the _system.img_ files have a different
+format which needs to be unpacked before it can be mounted.  Then it
+has to be repacked as well.  This requires the _simg2img_ and
+_make_ext4fs_ utilities.
+
+```console
+$ sudo apt-get install android-tools-fsutils
+$ ./gradlew assembleDebug
+$ simg2img /path/to/system.img system.img.raw
+$ mkdir /tmp/system
+$ sudo mount -t ext4 -o loop system.img.raw /tmp/system
+$ sudo mkdir /tmp/system/priv-app/F-DroidPrivilegedExtension
+$ sudo cp app/build/outputs/apk/F-DroidPrivilegedExtension-debug.apk \
+    /tmp/system/priv-app/F-DroidPrivilegedExtension/F-DroidPrivilegedExtension.apk
+$ sudo chcon -R --reference=/tmp/system/app/webview /tmp/system/priv-app/F-DroidPrivilegedExtension
+$ make_ext4fs -s -T -1 -S file_contexts -L system -l 512M -a system system.img.new /tmp/system
+$ sudo umount /tmp/system
+$ mv system.img.new /path/to/system.img
 ```
 
 Upon booting the emulator it should have the Privileged Extension
 installed.  It is also possible to install the F-Droid app this way,
 or via the normal methods.
+
+
+## via _adb_ on _android-19_ and older
+
+On old Android versions (4.4 and older), it is possible using only
+_adb_, but then each time the emulator is rebooted, it will lose the
+changes.  Take a snapshot to after completing this process to save the
+state.
+
+```console
+$ adb -e root
+$ adb -e remount
+$ adb -e shell mkdir /system/priv-app/F-DroidPrivilegedExtension
+$ sudo cp app/build/outputs/apk/F-DroidPrivilegedExtension-debug.apk \
+    /tmp/system/priv-app/F-DroidPrivilegedExtension/F-DroidPrivilegedExtension.apk
+$ sudo chcon -R --reference=/tmp/system/app/webview /tmp/system/priv-app/F-DroidPrivilegedExtension
+```

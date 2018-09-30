@@ -19,8 +19,8 @@ package org.fdroid.fdroid.privileged;
 
 import android.Manifest;
 import android.annotation.TargetApi;
-import android.app.Service;
 import android.app.PendingIntent;
+import android.app.Service;
 import android.app.admin.DevicePolicyManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -28,8 +28,8 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.IPackageDeleteObserver;
 import android.content.pm.IPackageInstallObserver;
-import android.content.pm.PackageManager;
 import android.content.pm.PackageInstaller;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.IBinder;
@@ -40,7 +40,6 @@ import android.widget.Toast;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-
 import java.lang.reflect.Method;
 
 /**
@@ -154,9 +153,9 @@ public class PrivilegedService extends Service {
     };
 
     /**
-    * Below function is copied mostly as-is from
-    * https://android.googlesource.com/platform/packages/apps/PackageInstaller/+/06163dec5a23bb3f17f7e6279f6d46e1851b7d16
-    */
+     * Below function is copied mostly as-is from
+     * https://android.googlesource.com/platform/packages/apps/PackageInstaller/+/06163dec5a23bb3f17f7e6279f6d46e1851b7d16
+     */
     @TargetApi(24)
     private void doPackageStage(Uri packageURI) {
         final PackageManager pm = getPackageManager();
@@ -229,10 +228,10 @@ public class PrivilegedService extends Service {
                 final PackageInstaller packageInstaller = pm.getPackageInstaller();
 
                 /*
-                * The client app used to set this to F-Droid, but we need it to be set to
-                * this package's package name to be able to uninstall from here.
-                */
-                pm.setInstallerPackageName(packageName, "org.fdroid.fdroid.privileged");
+                 * The client app used to set this to F-Droid, but we need it to be set to
+                 * this package's package name to be able to uninstall from here.
+                 */
+                pm.setInstallerPackageName(packageName, BuildConfig.APPLICATION_ID);
                 // Create a PendingIntent and use it to generate the IntentSender
                 Intent broadcastIntent = new Intent(BROADCAST_ACTION_UNINSTALL);
                 PendingIntent pendingIntent = PendingIntent.getBroadcast(
