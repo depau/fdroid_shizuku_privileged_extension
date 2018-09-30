@@ -40,7 +40,7 @@ There are potential risks to rooting and unlocking your device, including:
 
 ## How do I build it into my ROM?
 
-F-Droid Privileged Extension is designed to be built into ROMs and signed by the ROM key.  F-Droid only gets permissions via F-Droid Privileged Extension's internal key check, not via having a matching signing key or via `"signature" protectionLevel`.  Add `F-DroidPrivilegedExtension` to the `PRODUCT_PACKAGES` list to include it in the system image, and use a `repo` manifest like this:
+F-Droid Privileged Extension is designed to be built into ROMs and signed by the ROM key.  F-Droid only gets permissions via F-Droid Privileged Extension's internal key check, not via having a matching signing key or via `"signature" protectionLevel`.  This git repo includes an _Android.mk_ so it can be directly included via `repo`.   Add `F-DroidPrivilegedExtension` to the `PRODUCT_PACKAGES` list to include it in the system image, and use a `repo` manifest like this:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
