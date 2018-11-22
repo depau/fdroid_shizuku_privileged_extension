@@ -4,7 +4,7 @@
 
 If you find an issue in the F-Droid Privileged Extension, you can use
 our [Issue Tracker](https://gitlab.com/fdroid/privileged-extension/issues).
-Make sure that it hasn't yet been reported by searching first.
+Make sure it hasn't been reported yet by searching issues first.
 
 Remember to include the following information:
 
@@ -22,7 +22,7 @@ The strings are translated using [Weblate](https://weblate.org/en/). Follow
 like to contribute.
 
 Please *do not* send merge requests or patches modifying the translations. Use
-Weblate instead - it applies a series of fixes and suggestions, plus it keeps
+Weblate instead - it applies a series of fixes and suggestions, and it keeps
 track of modifications and fuzzy translations. Applying translations manually
 skips all of the fixes and checks, and overrides the fuzzy state of strings.
 
@@ -41,9 +41,9 @@ Some key points:
 * Exactly one top-level class per file
 * No wildcard imports
 * One statement per line
-* K&R spacings with braces and parenthesis
+* K&R spacings with braces and parentheses
 * Commented fallthroughs
-* Braces are always used after if, for and while
+* Braces are always used after if, for, and while
 
 We enforce some of these, but not all, via checkstyle.
 
@@ -71,7 +71,7 @@ command line:
 
 Note that the CI already runs the tests on an emulator, so you don't
 necessarily have to do this yourself if you open a merge request as the tests
-will get run.
+will be run using CI.
 
 ## Versioning
 
