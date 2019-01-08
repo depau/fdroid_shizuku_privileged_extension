@@ -1,3 +1,11 @@
+### 0.2.9 (2019-01-08)
+
+* Added new languages: Czech, Hungarian, Uygur
+
+* added support for whitelabel builds
+
+* Fixed OTA ZIP for "system as root"
+
 ### 0.2.8 (2018-05-02)
 
 * standardized on F-Droid name (with dash)
