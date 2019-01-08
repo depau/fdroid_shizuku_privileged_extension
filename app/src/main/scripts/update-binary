@@ -1,5 +1,4 @@
 #!/sbin/sh
-
 # Copyright 2013 Koushik Dutta, 2014 Ron Rieve
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,105 +24,58 @@ FPE_NAME=F-DroidPrivilegedExtension
 FPE=${FPE_NAME}.apk
 FDROID_NAME=F-Droid
 FDROID=${FDROID_NAME}.apk
-PERM_DIR="/system/etc/permissions"
+PERM_DIR="etc/permissions"
 PERM=permissions_org.fdroid.fdroid.privileged.xml
 ADDOND=80-fdroid.sh
+SYSTEM="/system"
 
-# mount and umount functions copied from
-# https://github.com/LineageOS/android_vendor_lineage/tree/1f94c931e041d8a664ac9f9f31a09028f4673cac/addonsu
 mount_system() {
-  if mount /system; then
-      return 0
-  fi
-
-  # Try to get the block from /etc/recovery.fstab
-  block=`cat /etc/recovery.fstab | cut -d '#' -f 1 | grep /system | grep -o '/dev/[^ ]*' | head -1`
-  if [ -n "$block" ] && mount $block /system; then
-      return 0
-  fi
+  mount /system
 
   # Modern devices use /system as root ("/")
   system_as_root=`getprop ro.build.system_root_image`
   if [ "$system_as_root" == "true" ]; then
-    active_slot=`getprop ro.boot.slot_suffix`
-    if [ ! -z "$active_slot" ]; then
-      block=/dev/block/bootdevice/by-name/system$active_slot
-    else
-      block=/dev/block/bootdevice/by-name/system
-    fi
-    mkdir -p /system_root
-    if mount -o rw $block /system_root && mount /system_root/system /system; then
-      return 0
-    fi
+    SYSTEM="/system/system"
   fi
-
-  return 1
-}
-
-umount_system() {
-  # Modern devices use /system as root ("/")
-  system_as_root=`getprop ro.build.system_root_image`
-  if [ "$system_as_root" == "true" ]; then
-    if umount /system && umount /system_root; then
-      return 0
-    fi
-  fi
-
-  if umount /system; then
-      return 0
-  fi
-
-  return 1
 }
 
 cd /tmp
 mkdir fdroid
 cd fdroid
 unzip -o "$3"
-if [ "$?" -ne "0" ]
-then
-  cp /cache/${FPE} .
-  cp /cache/${FDROID} .
-  cp /cache/${ADDOND} .
-  cp /cache/${PERM} .
-fi
 
 mount_system
 
-rm -f /system/app/FDroid*
-rm -f /system/app/FDroid*/*
-rm -f /system/priv-app/FDroid*
-rm -f /system/priv-app/FDroid*/*
-rm -f /system/app/F-Droid*
-rm -f /system/app/F-Droid*/*
-rm -f /system/priv-app/F-Droid*
-rm -f /system/priv-app/F-Droid*/*
+rm -rf ${SYSTEM}/app/FDroid*
+rm -rf ${SYSTEM}/priv-app/FDroid*
+rm -rf ${SYSTEM}/app/F-Droid*
+rm -rf ${SYSTEM}/priv-app/F-Droid*
 
-BUILD_VERSION_SDK="$(grep -F ro.build.version.sdk /system/build.prop)"
+BUILD_VERSION_SDK="$(grep -F ro.build.version.sdk ${SYSTEM}/build.prop)"
 BUILD_VERSION_SDK_INT="${BUILD_VERSION_SDK#*=}"
 if [ "${BUILD_VERSION_SDK_INT}" -ge 21 ]
 then
-  FPE_DIR="/system/priv-app/${FPE_NAME}"
+  FPE_DIR="${SYSTEM}/priv-app/${FPE_NAME}"
   mkdir ${FPE_DIR}
   chmod 755 ${FPE_DIR}
-  FDROIDDIR="/system/app/${FDROID_NAME}"
+  FDROIDDIR="${SYSTEM}/app/${FDROID_NAME}"
   mkdir ${FDROIDDIR}
   chmod 755 ${FDROIDDIR}
 elif [ "${BUILD_VERSION_SDK_INT}" -ge 19 ]
 then
-  FPE_DIR="/system/priv-app"
-  FDROIDDIR="/system/app"
+  FPE_DIR="${SYSTEM}/priv-app"
+  FDROIDDIR="${SYSTEM}/app"
 else
-  FPE_DIR="/system/app"
-  FDROIDDIR="/system/app"
+  FPE_DIR="${SYSTEM}/app"
+  FDROIDDIR="${SYSTEM}/app"
 fi
 
 if [ "${BUILD_VERSION_SDK_INT}" -ge 26 ]
 then
-	mkdir ${PERM_DIR}
-	chmod 755 ${PERM_DIR}
-	cp ${PERM} ${PERM_DIR}
-	chmod 644 ${PERM_DIR}/${PERM}
+	mkdir ${SYSTEM}/${PERM_DIR}
+	chmod 755 ${SYSTEM}/${PERM_DIR}
+	cp ${PERM} ${SYSTEM}/${PERM_DIR}
+	chmod 644 ${SYSTEM}/${PERM_DIR}/${PERM}
 fi
 
 cp ${FPE} ${FPE_DIR}
@@ -135,9 +87,9 @@ echo -n -e 'ui_print Installing F-Droid...\n' > /proc/self/fd/$2
 cp ${FDROID} ${FDROIDDIR}
 chmod 644 ${FDROIDDIR}/${FDROID}
 
-cp ${ADDOND} /system/addon.d/
+cp ${ADDOND} ${SYSTEM}/addon.d/
 
-umount_system
+umount /system
 
 echo -n -e 'ui_print done\n' > /proc/self/fd/$2
 echo -n -e 'ui_print\n' > /proc/self/fd/$2
