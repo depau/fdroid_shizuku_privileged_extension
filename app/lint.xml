@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+    <!-- this is never going to be a real "app" -->
+    <issue id="GoogleAppIndexingWarning" severity="disable"/>
+
+    <!-- The version name/code needs to be set in both the AndroidManifest.xml
+    and build.gradle to handle the various build systems, see README.md -->
+    <issue id="GradleOverrides" severity="warning"/>
+
+    <!-- promote to errors -->
+    <issue id="AppCompatMethod" severity="error"/>
+    <issue id="DefaultLocale" severity="error"/>
+    <issue id="GetInstance" severity="error"/>
+    <issue id="HardcodedText" severity="error"/>
+    <issue id="HardwareIds" severity="error"/>
+    <issue id="ImpliedQuantity" severity="error"/>
+    <issue id="InlinedApi" severity="error"/>
+    <issue id="NestedScrolling" severity="error"/>
+    <issue id="NewApi" severity="error"/>
+    <issue id="PackageManagerGetSignatures" severity="error"/>
+    <issue id="PluralsCandidate" severity="error"/>
+    <issue id="ProtectedPermissions" severity="error"/>
+    <issue id="SetTextI18n" severity="error"/>
+    <issue id="SimpleDateFormat" severity="error"/>
+    <issue id="StringFormatCount" severity="error"/>
+    <issue id="TrustAllX509TrustManager" severity="error"/>
+    <issue id="Typos" severity="error"/>
+    <issue id="UnsafeProtectedBroadcastReceiver" severity="error"/>
+    <issue id="UnusedResources" severity="error"/>
+
+    <!-- Someone needs to figure out how to get packageName and return
+         status on Android older than android-21:
+         https://gitlab.com/fdroid/privileged-extension/issues/55 -->
+    <issue id="InlinedApi" severity="error">
+        <ignore path="src/main/java/org/fdroid/fdroid/privileged/PrivilegedService.java"/>
+    </issue>
+
+    <!-- both the correct and deprecated he/id locales need to be present for
+         them to be recognized on all devices -->
+    <issue id="LocaleFolder" severity="error">
+        <ignore path="src/main/res/values-he"/>
+        <ignore path="src/main/res/values-id"/>
+    </issue>
+</lint>
