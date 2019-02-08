@@ -40,7 +40,7 @@ build_on_debian:
     - unzip -q platform-25_r03.zip
     - mv android-7.1.1 $ANDROID_HOME/platforms/platform-25
     - mkdir -p $ANDROID_HOME/licenses/
-    - printf '\n8933bad161af4178b1185d1a37fbf41ea5269c55\n\nd56f5187479451eabf01fb78af6dfcb131a6481e\n'
+    - echo '24333f8a63b6825ea9c5514f83c2829b004d1fee'
        > $ANDROID_HOME/licenses/android-sdk-license
     - sed -i
           -e "s,jcenter(),maven { url 'file:///usr/share/maven-repo' },"
