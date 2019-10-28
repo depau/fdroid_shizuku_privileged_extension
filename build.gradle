@@ -1,8 +1,10 @@
 buildscript {
     repositories {
+        maven { url 'file:///usr/share/maven-repo' }
         jcenter()
     }
     dependencies {
+        // 2.2.2 is the version that is included in Debian/stretch
         classpath 'com.android.tools.build:gradle:2.2.2'
     }
 }
