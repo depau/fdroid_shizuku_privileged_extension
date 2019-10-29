@@ -1,0 +1,5 @@
+* Fix Android.mk builds
+
+* Added new languages: Albanian, Bengali, French, Hebrew, Hindi, Nynorsk, Slovak
+
+* Allow gradle to fetch depends from Debian

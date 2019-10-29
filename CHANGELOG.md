@@ -1,3 +1,11 @@
+### 0.2.10 (2019-10-28)
+
+* Fix Android.mk builds
+
+* Added new languages: Albanian, Bengali, French, Hebrew, Hindi, Nynorsk, Slovak
+
+* Allow gradle to fetch depends from Debian
+
 ### 0.2.9 (2019-01-08)
 
 * Added new languages: Czech, Hungarian, Uygur
