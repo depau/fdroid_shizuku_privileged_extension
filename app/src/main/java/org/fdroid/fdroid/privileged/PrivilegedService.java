@@ -256,24 +256,25 @@ public class PrivilegedService extends Service {
         super.onCreate();
 
         accessProtectionHelper = new AccessProtectionHelper(this);
+        if (Build.VERSION.SDK_INT < 24) {
+            // get internal methods via reflection
+            try {
+                Class<?>[] installTypes = {
+                        Uri.class, IPackageInstallObserver.class, int.class,
+                        String.class,
+                };
+                Class<?>[] deleteTypes = {
+                        String.class, IPackageDeleteObserver.class,
+                        int.class,
+                };
 
-        // get internal methods via reflection
-        try {
-            Class<?>[] installTypes = {
-                    Uri.class, IPackageInstallObserver.class, int.class,
-                    String.class,
-            };
-            Class<?>[] deleteTypes = {
-                    String.class, IPackageDeleteObserver.class,
-                    int.class,
-            };
-
-            PackageManager pm = getPackageManager();
-            installMethod = pm.getClass().getMethod("installPackage", installTypes);
-            deleteMethod = pm.getClass().getMethod("deletePackage", deleteTypes);
-        } catch (NoSuchMethodException e) {
-            Log.e(TAG, "Android not compatible!", e);
-            stopSelf();
+                PackageManager pm = getPackageManager();
+                installMethod = pm.getClass().getMethod("installPackage", installTypes);
+                deleteMethod = pm.getClass().getMethod("deletePackage", deleteTypes);
+            } catch (NoSuchMethodException e) {
+                Log.e(TAG, "Android not compatible!", e);
+                stopSelf();
+            }
         }
 
         IntentFilter intentFilter = new IntentFilter();
