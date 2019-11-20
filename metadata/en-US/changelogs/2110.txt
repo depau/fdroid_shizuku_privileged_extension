@@ -1,0 +1,2 @@
+Fix install/uninstall issue on Android 10/Q (#47)
+

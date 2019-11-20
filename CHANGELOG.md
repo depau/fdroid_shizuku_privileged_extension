@@ -1,3 +1,7 @@
+### 0.2.11 (2019-11-20)
+
+* Fix install/uninstall issue on Android 10/Q (#47)
+
 ### 0.2.10 (2019-10-28)
 
 * Fix Android.mk builds
