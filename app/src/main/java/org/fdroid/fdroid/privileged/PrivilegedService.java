@@ -28,6 +28,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.IPackageDeleteObserver;
 import android.content.pm.IPackageInstallObserver;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageInstaller;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -41,6 +42,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.lang.reflect.Method;
+import java.util.List;
 
 /**
  * This service provides an API via AIDL IPC for the main F-Droid app to install/delete packages.
@@ -244,7 +246,33 @@ public class PrivilegedService extends Service {
                 deletePackageImpl(packageName, flags, callback);
             }
         }
+
+        @Override
+        public List<PackageInfo> getInstalledPackages(int flags) {
+            if (Build.VERSION.SDK_INT >= 29) {
+                Integer matchStaticSharedLibraries = getMatchStaticSharedLibraries();
+                if (matchStaticSharedLibraries != null) {
+                    flags |= matchStaticSharedLibraries;
+                }
+            }
+            return getPackageManager().getInstalledPackages(flags);
+        }
     };
+
+    /**
+     * Get private constant.
+     *
+     * @see <a href="https://github.com/aosp-mirror/platform_frameworks_base/blob/android-11.0.0_r31/core/java/android/content/pm/PackageManager.java#L530">PackageManager.MATCH_STATIC_SHARED_LIBRARIES</a>
+     */
+    protected static Integer getMatchStaticSharedLibraries() {
+        try {
+            java.lang.reflect.Field field = PackageManager.class.getDeclaredField("MATCH_STATIC_SHARED_LIBRARIES");
+            return (Integer) field.get(null);
+        } catch (NoSuchFieldException | IllegalAccessException | ClassCastException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
     @Override
     public IBinder onBind(Intent intent) {
