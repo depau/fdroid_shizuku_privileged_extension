@@ -1,0 +1,1 @@
+Arruma problema de instalação/desinstalação no Android 10/Q (#47)

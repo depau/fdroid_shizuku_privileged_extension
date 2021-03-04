@@ -1,0 +1,3 @@
+* Reproduzido contrução
+
+* Arrumado código de sobrevivência do OTA
