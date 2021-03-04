@@ -1,0 +1,1 @@
+riparita problemo pri (mal)instalado ĉe Android 10/Q (#47)

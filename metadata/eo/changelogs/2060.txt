@@ -1,0 +1,3 @@
+* rekreeblaj kompilaĵoj
+
+* riparita skripto de travivo de OTA

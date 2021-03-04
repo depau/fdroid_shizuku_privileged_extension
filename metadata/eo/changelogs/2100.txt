@@ -1,0 +1,5 @@
+* riparita kompilo per Android.mk
+
+* novaj lingvoj: albana, bengala, franca, hebrea, hindia, norvega nynorsk, slovaka
+
+* permesi al Gradle elŝuti dependaĵojn el Debian
