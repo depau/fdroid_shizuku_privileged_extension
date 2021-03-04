@@ -1,0 +1,5 @@
+* Corregidas builds de Android.mk
+
+* Añadidos nuevos idiomas: albanés, bengalí, francés, hebreo, hindi, nynorsk, eslovaco
+
+* Permitir a gradle obtener las dependencias de Debian

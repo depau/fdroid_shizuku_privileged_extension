@@ -1,0 +1,3 @@
+* Build reproducible
+
+* Corregido el script de supervivencia de la OTA
