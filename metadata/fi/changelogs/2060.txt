@@ -1,0 +1,3 @@
+* Toistettavissa oleva rakenne
+
+* Korjattu OTA survival script
