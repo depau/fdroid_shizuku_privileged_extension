@@ -1,0 +1,5 @@
+* Fiks Android.mk-byggversjoner
+
+* La til nye språk: Albansk, bengalsk, fransk, hebraisk, hindi, nynorsk, slovakisk
+
+* Tillat Gradle å innhente avhengigheter fra Debian

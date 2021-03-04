@@ -1,0 +1,3 @@
+* Reproduserbar byggversjon
+
+* Fikset OTA-overlevelsesskriptet
