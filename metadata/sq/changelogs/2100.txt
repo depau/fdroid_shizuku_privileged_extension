@@ -1,0 +1,5 @@
+* Ndreqje montimesh Android.mk
+
+* U shtuan gjuhë të reja: shqip, bengalisht, frëngjisht, hebraisht, indisht, nynorsk, sllovakisht
+
+* Lejim i gradle-it të sjellë varësi nga Debian
