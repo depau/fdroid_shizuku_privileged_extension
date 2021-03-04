@@ -1,0 +1,3 @@
+* Tekrarlanabilir derlemeler
+
+* OTA atlatma betiği düzeltildi

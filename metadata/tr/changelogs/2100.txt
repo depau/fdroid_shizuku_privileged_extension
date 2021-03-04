@@ -1,0 +1,5 @@
+* Android.mk derlemelerini düzelt
+
+* Yeni diller eklendi: Arnavutça, Bengalce, Fransızca, İbranice, Hintçe, Nynorsk, Slovakça
+
+* Gradle'ın Debian'dan bağımlılıkları almasına izin ver

@@ -1,0 +1,3 @@
+* Yeni diller eklendi: Çekçe, Macarca, Uygurca
+
+* beyaz etiket derlemeleri için destek eklendi
