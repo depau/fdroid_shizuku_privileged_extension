@@ -1,0 +1,5 @@
+* Naprawiono kompilacje za pomocą Android.mk
+
+* Dodano nowe języki: albański, bengalski, francuski, hebrajski, hindi, nynorsk, słowacki
+
+* Zezwalano na pobieranie przez gradle zależności Debiana

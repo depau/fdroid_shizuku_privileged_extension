@@ -1,0 +1,1 @@
+Naprawiono problem z instalacją/odinstalowaniem w systemie Android 10/Q (#47)

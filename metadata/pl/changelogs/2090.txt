@@ -1,0 +1,3 @@
+* Dodano nowe języki: czeski, węgierski, Uygur
+
+* dodano obsługę kompilacji "whitelabel"
