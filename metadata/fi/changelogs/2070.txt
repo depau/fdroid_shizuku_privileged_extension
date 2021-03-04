@@ -1,0 +1,3 @@
+* Korjattu OTA ZIP Android 8.0 Oreolle
+
+* käännöspäivityksiä
