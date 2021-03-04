@@ -1,3 +1,3 @@
 * Lisätty uusia kieliä: tšekki, unkari, uiguuri
 
-* added support for whitelabel builds
+* Tuki lisätty Whitelabel-versioille
