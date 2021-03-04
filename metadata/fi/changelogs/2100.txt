@@ -2,4 +2,4 @@
 
 * Lisätty uusia kieliä: albaani, bengali, ranska, heprea, hindi, uusnorja, slovakki
 
-* Allow gradle to fetch depends from Debian
+* Anna Gradlen noutaa riippuvuudet Debianista
