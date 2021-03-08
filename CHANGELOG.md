@@ -1,3 +1,9 @@
+### 0.2.12 (2021-03-08)
+
+* new API method: getInstalledPackages() for unfiltered list of installed apps
+
+* add new translations: Bengali Vietnamese
+
 ### 0.2.11 (2019-11-20)
 
 * Fix install/uninstall issue on Android 10/Q (#47)
