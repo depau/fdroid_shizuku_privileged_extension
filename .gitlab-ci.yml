@@ -1,4 +1,6 @@
-image: registry.gitlab.com/fdroid/ci-images-client:latest
+
+.base:
+  image: registry.gitlab.com/fdroid/ci-images-client:latest
 
 cache:
   paths:
@@ -12,6 +14,25 @@ before_script:
   - export ANDROID_BUILD_TOOLS=`sed -n "s,.*buildToolsVersion\s*'\([0-9][0-9.]*\)'.*,\1,p" app/build.gradle`
   - echo y | $ANDROID_HOME/tools/bin/sdkmanager "build-tools;${ANDROID_BUILD_TOOLS}" > /dev/null
   - apt-get update && apt-get -y install gnupg
+
+.test-template: &test-template
+  extends: .base
+  stage: test
+  artifacts:
+    name: "${CI_PROJECT_PATH}_${CI_JOB_STAGE}_${CI_COMMIT_REF_NAME}_${CI_COMMIT_SHA}"
+    paths:
+      - kernel.log
+      - logcat.txt
+      - app/core*
+      - app/*.log
+      - app/build/reports
+      - app/build/outputs/*ml
+      - app/build/outputs/apk
+    expire_in: 1 week
+    when: on_failure
+  after_script:
+    - echo "Download debug artifacts from https://gitlab.com/${CI_PROJECT_PATH}/-/jobs"
+
 
 build_on_debian:
   image: debian:stretch
@@ -57,6 +78,7 @@ build_on_debian:
     - echo "Download debug artifacts from https://gitlab.com/${CI_PROJECT_PATH}/-/jobs"
 
 test:
+  extends: .base
   only:
     - branches
   script:
@@ -91,35 +113,27 @@ test:
     - echo "Download debug artifacts from https://gitlab.com/${CI_PROJECT_PATH}/-/jobs"
 
 .connected-template: &connected-template
+  extends: .base
   script:
     - ./gradlew assembleDebug
-    - echo y | sdkmanager "platforms;android-$AVD_SDK" > /dev/null
-    - if ! avdmanager list avd | grep "Name. avd$AVD_SDK$"; then
-          rm -rf ~/.android/avd  $ANDROID_HOME/system-images;
-          echo y | sdkmanager "$AVD_PACKAGE" > /dev/null;
-          echo no | avdmanager create avd --name avd$AVD_SDK --tag "$AVD_TAG" --package "$AVD_PACKAGE";
-          avdmanager list avd;
-      fi
-    - emulator -avd avd$AVD_SDK
-        -no-audio
-        -no-jni
-        -no-snapstorage
-        -no-window
-        -skip-adb-auth
-        -verbose
-        -wipe-data
-        &
-    - wait-for-emulator
-    - adb shell input keyevent 82 &
-    - ./gradlew connectedCheck || (adb -e logcat -d '*:E' > logcat.txt; exit 1)
+    - export AVD_SDK=`echo $CI_JOB_NAME | awk '{print $2}'`
+    - export AVD_TAG=`echo $CI_JOB_NAME | awk '{print $3}'`
+    - export AVD_ARCH=`echo $CI_JOB_NAME | awk '{print $4}'`
+    - export AVD_PACKAGE="system-images;android-${AVD_SDK};${AVD_TAG};${AVD_ARCH}"
+    - echo $AVD_PACKAGE
 
-connected22:
+    - adb start-server
+    - start-emulator
+    - wait-for-emulator
+    - adb devices
+    - adb shell input keyevent 82 &
+    - ./gradlew installDebug
+    - ./gradlew connectedCheck
+
+no-accel 22 default x86:
   only:
     - branches
-  variables:
-    AVD_SDK: "22"
-    AVD_TAG: "default"
-    AVD_PACKAGE: "system-images;android-${AVD_SDK};${AVD_TAG};armeabi-v7a"
+  <<: *test-template
   <<: *connected-template
 
 after_script:
