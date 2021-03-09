@@ -62,7 +62,7 @@ Add `F-DroidPrivilegedExtension` to the `PRODUCT_PACKAGES` list to include it in
   <remote name="fdroid" fetch="https://gitlab.com/fdroid/" />
   <project path="packages/apps/F-DroidPrivilegedExtension"
            name="privileged-extension.git" remote="fdroid"
-           revision="refs/tags/0.2.11" />
+           revision="refs/tags/0.2.12" />
 
 </manifest>
 ```
