@@ -1,0 +1,13 @@
+Merk: F-Droid krev rotløyve for å installera dette som ein «priv-app» (privilegert app).
+
+https://f-droid.org/packages/org.fdroid.fdroid kan bruka system­løyve for å installera, oppdatera og fjerna appar på eiga hand. Det er berre system­appar som kan få slike løyve.
+
+Det er her denne løyve­utvidinga kjem inn i biletet. Sidan det er ein separat og mykje mindre app, kan han installerast som ein system­app og kommunisera med hovud­appen via AIDL IPC.
+
+Dette har fleire fordelar:
+
+* Det tek opp mindre plass på systempartisjonen
+* Systemoppdateringar vil ikkje fjerna F-Droid
+* Prosessen med å installera til systemet via «root» er tryggare
+
+Dei fleste bør heller installera OTA-zipfila («Over-The-Air») https://f-droid.org/packages/org.fdroid.fdroid.privileged.ota i staden for denne utgåva. Appen her er til for oppdatering av utvidinga etter at ho tidlegare er installert via OTA-zipfila.

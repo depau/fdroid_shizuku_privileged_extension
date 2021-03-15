@@ -1,0 +1,3 @@
+* Reproduserbar pakke
+
+* Fiksa skript for OTA-overleving

@@ -1,0 +1,5 @@
+* Fiksa Android.mk-bygging
+
+* Nye omsetjingar: albansk, bengalsk, fransk, hebraisk, hindi, norsk (nynorsk) og slovakisk
+
+* Tillèt no at Gradle hentar avhengnadar frå Debian
