@@ -1,0 +1,5 @@
+* 修复 Android.mk 构建
+
+* 添加新语言：Albanian, Bengali, French, Hebrew, Hindi, Nynorsk, Slovak
+
+* 允许 gradle 从 Debian 获取依赖

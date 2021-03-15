@@ -1,0 +1,3 @@
+* 新 API 方法：getInstalledPackages() 用于未过滤的已安装应用列表
+
+* 添加新翻译：Bengali Vietnamese
