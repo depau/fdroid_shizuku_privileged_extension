@@ -1,0 +1,20 @@
+Huomaa: F-Droid vaatii päkäyttäjän oikeudet (root) asentaakseen
+Privileged-laajennuksen järjestelmäsovelluksena "priv-app".
+
+https://f-droid.org/packages/org.fdroid.fdroid voi käyttää järjestelmäsovelluksen
+oikeuksia sovellusten asentamiseen ja päivittämiseen itsenäisesti. Ainoa tapa saada
+nämä oikeudet on olla järjestelmäsovellus.
+
+Tätä varten on Privileged-laajennus; se on erillinen (ja paljon pienempi) sovellus,
+joka asennetaan järjestelmäsovellukseksi ja kommunikoi pääsovelluksen kanssa
+AIDL IPC -protokollalla.
+
+Tällä on muutama etu:
+
+* Järjestelmäosion tilaa käytetään vähemmän
+* Käyttöjärjestelmän päivitykset eivät poista F-Droidia
+* Pääkäyttäjän oikeuksilla asentaminen on turvallisempaa
+
+Suurin osa käyttäjistä halunnee asentaa tämän sijasta "Over-The-Air" (OTA)
+päivitys-ZIP:in: https://f-droid.org/packages/org.fdroid.fdroid.privileged.ota.
+Tämä on olemassa laajennuksen päivittämiseksi kun OTA ZIP on ensin asennettu.
