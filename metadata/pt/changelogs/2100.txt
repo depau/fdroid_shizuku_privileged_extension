@@ -1,5 +1,5 @@
-* Arruma contrução do Android.mk 
+* Arruma construção do Android.mk 
 
 * Adicionado novos idiomas: Albanês, Bengali, Francês, Hebraico, Hindi, Novo Norueguês, Eslovaco
 
-* Permitir que o gradle busque depende do Debian
+* Permitir que o gradle busque dependências do Debian
