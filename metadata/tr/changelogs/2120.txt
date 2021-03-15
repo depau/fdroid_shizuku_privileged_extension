@@ -1,0 +1,3 @@
+* yeni API yöntemi: kurulu uygulamaların filtrelenmemiş listesi için getInstalledPackages()
+
+* yeni çeviriler eklendi: Bengalce Vietnamca

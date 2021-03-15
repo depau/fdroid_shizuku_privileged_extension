@@ -1,0 +1,1 @@
+Standardisation du nom F-Droid (avec un tiret "-")

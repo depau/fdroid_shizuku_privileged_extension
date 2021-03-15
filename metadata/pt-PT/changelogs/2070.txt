@@ -1,0 +1,3 @@
+* ZIP OTA para Android 8.0 Oreo corrgido
+
+* Atualização de traduções
