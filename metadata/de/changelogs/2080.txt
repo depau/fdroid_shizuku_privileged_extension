@@ -1,1 +1,1 @@
-standardisiert auf F-Droid-Namen (mit Bindestrichen)
+Standardisierung des Namens F-Droid (mit Bindestrich)

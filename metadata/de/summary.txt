@@ -1,1 +1,1 @@
-Dienste zur sicheren App-Installation und -Aktualisierung durch F-Droid
+Dienste, die F-Droid gestatten, Apps sicher zu installieren und zu aktualisieren
