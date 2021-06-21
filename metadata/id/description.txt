@@ -1,0 +1,21 @@
+Catatan: F-Droid membutuhkan hak akses root untuk menginstal Ekstensi Istimewa
+sebagai sebuah sistem "aplikasi-priv".
+
+https://f-droid.org/packages/org.fdroid.fdroid dapat memanfaatkan hak istimewa atau izin sistem
+Untuk memasang, memperbarui, dan menghapus aplikasi sendiri. Satu-satunya cara untuk
+Dapatkan hak istimewa tersebut adalah menjadi aplikasi sistem.
+
+Di sinilah Ekstensi Istimewa masuk - menjadi sebuah aplikasi terpisah
+dan jauh lebih kecil, dapat dipasang sebagai aplikasi sistem dan berkomunikasi
+Dengan aplikasi utama melalui AIDL IPC.
+
+Ini memiliki beberapa keunggulan:
+
+* Mengurangi penggunaan disk di partisi sistem
+* Pembaruan sistem tidak menghapus f-droid
+* Proses pemasangan ke dalam sistem melalui root lebih aman
+
+Daripada build ini, sebagian besar pengguna akan ingin menginstal
+berkas ZIP yang disebut"Over-The-Air" (OTA)
+https://f-droid.org/packages/org.fdroid.fdroid.privileged.ota. Ini terdapat disini untuk memperbarui
+Ekstensi Istimewa ketika telah dipasang menggunakan OTA ZIP.

@@ -1,0 +1,3 @@
+* Build yang dapat direproduksi
+
+* Skrip penyimpanan tetap OTA
