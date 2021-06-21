@@ -13,9 +13,9 @@ Bunun birkaç yararı var:
 
 * Sistem bölümünde daha az disk kullanımı
 * Sistem güncellemeleri F-Droid'i kaldırmaz
-* Root ile sisteme kurma işlemi daha güvenlidir
+* Kök ile sisteme kurma işlemi daha güvenlidir
 
-Bu yapı yerine, çoğu kullanıcı "Over-The-Air" (OTA)
-güncellemesini kurmak isteyecektir. ZIP dosyası
-https://f-droid.org/packages/org.fdroid.fdroid.privileged.ota olarak adlandırılır.
-Bu, OTA ZIP kullanılarak kurulduğunda Ayrıcalıklı Uzantıyı güncellemek için burada.
+Bu yapı yerine, çoğu kullanıcı
+https://f-droid.org/packages/org.fdroid.fdroid.privileged.ota
+adındaki "Over-The-Air" (OTA) ZIP güncellemesini
+kurmak isteyecektir. OTA ZIP ile yüklendiğinde güncellenmesi için buradadır.
