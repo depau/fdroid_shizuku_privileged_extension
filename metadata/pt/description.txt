@@ -16,4 +16,4 @@ Isso tem várias vantagens:
 
 Em vez desta compilação, a maioria dos utilizadores desejará instalar o ficheiro ZIP
 de atualização "Over-The-Air" (OTA) chamado https://f-droid.org/packages/org.fdroid.fdroid.privileged.ota.
-Isso está aqui para atualizar o Extensão Privilegiada quando tiver sido instalado usando o OTA ZIP.
+Isso está aqui para atualizar o Extensão Privilegiada quando tiver sido instalado a usar o OTA ZIP.
