@@ -1,0 +1,1 @@
+Lagað vandamál með uppsetningu/fjarlægingu í Android 10/Q (#47)

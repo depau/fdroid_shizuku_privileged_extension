@@ -1,0 +1,1 @@
+Fix il processo di installamento/disinstallamento su Android 10/Q (#47)

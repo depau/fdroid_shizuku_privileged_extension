@@ -1,0 +1,5 @@
+* Lagaðar Android.mk byggingarútgáfur
+
+* Bætt við nýjum tungumálum: Albanska, bengalska, franska, hebreska, hindí, nýnorska, slóvakíska
+
+* Leyft að gradle nái í kerfisháð atriði frá Debian
