@@ -1,0 +1,3 @@
+* Fixed OTA ZIP pentru Android 8.0 Oreo
+
+* actualizări de traducere

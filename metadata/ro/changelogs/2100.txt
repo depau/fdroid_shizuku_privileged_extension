@@ -1,0 +1,5 @@
+* Fix Android.mk build-uri
+
+* A adăugat noi limbi: Albaneză, Bengaleză, Franceză, Ebraică, Hindi, Nynorsk, Slovacă
+
+* Permiteți lui gradle să aducă dependențe de la Debian

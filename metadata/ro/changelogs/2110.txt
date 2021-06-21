@@ -1,0 +1,1 @@
+Rezolvarea problemei de instalare/dezinstalare pe Android 10/Q (#47)

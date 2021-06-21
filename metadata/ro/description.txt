@@ -1,0 +1,21 @@
+Notă: F-Droid necesită privilegii de root pentru a instala Privileged Extension
+ca "priv-app" de sistem.
+
+https://f-droid.org/packages/org.fdroid.fdroid poate utiliza privilegiile sau permisiunile de sistem
+pentru a instala, actualiza și elimina aplicații pe cont propriu. Singura modalitate de a
+a obține aceste privilegii este de a deveni o aplicație de sistem.
+
+Aici intervine Privileged Extension - fiind o aplicație separată
+și mult mai mică, aceasta poate fi instalată ca aplicație de sistem și poate comunica
+cu aplicația principală prin intermediul AIDL IPC.
+
+Acest lucru are mai multe avantaje:
+
+* Utilizarea redusă a discului în partiția de sistem
+* Actualizările de sistem nu elimină F-Droid
+* Procesul de instalare în sistem prin root este mai sigur
+
+În loc de acest build, majoritatea utilizatorilor vor dori să instaleze versiunea
+"Over-The-Air" (OTA) fișierul ZIP de actualizare se numește
+https://f-droid.org/packages/org.fdroid.fdroid.privileged.ota.  Acesta este aici pentru a actualiza
+Privileged Extension atunci când a fost instalat cu ajutorul OTA ZIP.

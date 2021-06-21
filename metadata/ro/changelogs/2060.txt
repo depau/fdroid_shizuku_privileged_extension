@@ -1,0 +1,3 @@
+* Construcție reproductibilă
+
+* Fix script de supraviețuire OTA
