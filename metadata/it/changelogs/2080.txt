@@ -1,3 +1,1 @@
-* Sistemato OTA ZIP su Android 8.0 Oreo
-
-* aggiornamenti alle traduzioni
+standardizzato il nome F-Droid (con trattino)
