@@ -1,0 +1,3 @@
+* Thêm ngôn ngữ mới: Séc, Hungary, Uygur
+
+* thêm sự hỗ trợ cho các bản dựng nhãn trắng

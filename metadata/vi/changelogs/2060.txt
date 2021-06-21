@@ -1,0 +1,3 @@
+* Bản dựng có thể tái tạo
+
+* Sửa tệp lệnh sống sót qua OTA

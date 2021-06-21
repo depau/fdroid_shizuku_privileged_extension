@@ -1,0 +1,5 @@
+* Sửa các bản dựng Android.mk
+
+* Thêm ngôn ngữ mới: Albani, Bengali, Tiếng Pháp, Hebrew, Hindi, Nynorsk, Slovak
+
+* Cho phép gradle lấy các gói phụ thuộc từ Debian

@@ -1,0 +1,21 @@
+Lưu ý: F-Droid yêu cầu quyền root để cài đặt Phần mở rộng có quyền
+làm "ứng dụng hệ thống có đặc quyền".
+
+https://f-droid.org/packages/org.fdroid.fdroid có thể sử dụng đặc quyền hoặc quyền của hệ thống
+để tự nó cài đặt, cập nhật và gỡ bỏ các ứng dụng. Cách duy nhất để
+đạt được đặc quyền đó là trở thành ứng dụng hệ thống.
+
+Đây là nơi Phần mở rộng có quyền xuất hiện - là một ứng dụng riêng
+và nhỏ hơn nhiều, nó có thể được cài đặt làm ứng dụng hệ thống và giao tiếp
+với ứng dụng chính qua AIDL IPC.
+
+Điều này có một vài lợi thế:
+
+* Sử dụng ít không gian trong hệ thống hơn
+* Các bản cập nhật hệ thống không xoá F-Droid
+* Quá trình cài đặt vào hệ thống thông qua root an toàn hơn
+
+Thay vì bản dựng này, đa số người dùng sẽ muốn cài đặt
+tệp ZIP cập nhật "Over-The-Air" (OTA) được gọi là
+https://f-droid.org/packages/org.fdroid.fdroid.privileged.ota. Ứng dụng này ở đây là để cập nhật
+Phần mở rộng có quyền khi nó đã được cài đặt bằng cách sử dụng tệp ZIP OTA.
