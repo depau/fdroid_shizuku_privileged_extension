@@ -1,4 +1,4 @@
-Märkus: F-Droid vaja administraatori õigused, et paigaldada priviligeeritud laiendus kui süsteemi "priv-app".
+Märkus: F-Droid vajab administraatori õigused, et paigaldada priviligeeritud laiendus kui süsteemi "priv-app".
 
 https://f-droid.org/packages/org.fdroid.fdroid võib kasutada süsteemi privileege või õiguseid, et iseseisvalt paigaldada, värskendada või eemaldada rakendusi. Ainus meetod nende õiguste saamiseks on hakata süsteemi rakenduseks.
 
@@ -6,7 +6,7 @@ See on koht, kus mängu tuleb priviligeeritud laiendus - Privileged Extension. T
 
 Sellel on mitmed eeliseid:
 
-* Vähendati süsteemi partitsiooni kasutust
+* Väheneb süsteemipartitsiooni kasutus
 * Süsteemi värskendused ei eemalda F-Droidi
 * Ohutum süsteemi paigaldamise protsess administraatorina
 
