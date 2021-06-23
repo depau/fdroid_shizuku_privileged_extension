@@ -1,19 +1,24 @@
+stages:
+  - test
+  - deploy
 
 .base:
   image: registry.gitlab.com/fdroid/ci-images-client:latest
-
-cache:
-  paths:
-    - .gradle/wrapper
-    - .gradle/caches
-
-before_script:
-  - export GRADLE_USER_HOME=$PWD/.gradle
-  - export ANDROID_COMPILE_SDK=`sed -n 's,.*compileSdkVersion\s*\([0-9][0-9]*\).*,\1,p' app/build.gradle`
-  - echo y | $ANDROID_HOME/tools/bin/sdkmanager "platforms;android-${ANDROID_COMPILE_SDK}" > /dev/null
-  - export ANDROID_BUILD_TOOLS=`sed -n "s,.*buildToolsVersion\s*'\([0-9][0-9.]*\)'.*,\1,p" app/build.gradle`
-  - echo y | $ANDROID_HOME/tools/bin/sdkmanager "build-tools;${ANDROID_BUILD_TOOLS}" > /dev/null
-  - apt-get update && apt-get -y install gnupg
+  before_script:
+    - export GRADLE_USER_HOME=$PWD/.gradle
+    - export ANDROID_COMPILE_SDK=`sed -n 's,.*compileSdkVersion\s*\([0-9][0-9]*\).*,\1,p' app/build.gradle`
+    - echo y | $ANDROID_HOME/tools/bin/sdkmanager "platforms;android-${ANDROID_COMPILE_SDK}" > /dev/null
+    - export ANDROID_BUILD_TOOLS=`sed -n "s,.*buildToolsVersion\s*'\([0-9][0-9.]*\)'.*,\1,p" app/build.gradle`
+    - echo y | $ANDROID_HOME/tools/bin/sdkmanager "build-tools;${ANDROID_BUILD_TOOLS}" > /dev/null
+    - apt-get update && apt-get -y install gnupg
+  after_script:
+    # this file changes every time but should not be cached
+    - rm -f $GRADLE_USER_HOME/caches/modules-2/modules-2.lock
+    - rm -fr $GRADLE_USER_HOME/caches/*/plugin-resolution/
+  cache:
+    paths:
+      - .gradle/wrapper
+      - .gradle/caches
 
 .test-template: &test-template
   extends: .base
@@ -112,6 +117,12 @@ test:
   after_script:
     - echo "Download debug artifacts from https://gitlab.com/${CI_PROJECT_PATH}/-/jobs"
 
+# Run the tests in the emulator.  Each step is broken out to run on
+# its own since the CI runner can have limited RAM, and the emulator
+# can take a while to start.
+#
+# once these prove stable, the task should be switched to
+# connectedCheck to test all the build flavors
 .connected-template: &connected-template
   extends: .base
   script:
@@ -136,7 +147,23 @@ no-accel 22 default x86:
   <<: *test-template
   <<: *connected-template
 
-after_script:
-    # this file changes every time but should not be cached
-    - rm -f $GRADLE_USER_HOME/caches/modules-2/modules-2.lock
-    - rm -fr $GRADLE_USER_HOME/caches/*/plugin-resolution/
+
+deploy_nightly:
+  extends: .base
+  stage: deploy
+  only:
+    refs:
+      - master
+    variables:
+      - $DEBUG_KEYSTORE
+  script:
+    - sed -i 's,F-Droid,F-Nightly,i' app/src/main/res/values*/strings.xml
+    - export currentVersionCode=$(grep -Eo '[1-9][0-9]{3,}' app/src/main/AndroidManifest.xml)
+    - export versionCode=`printf '%d%05d' $currentVersionCode $(date '+%s'| cut -b4-8)`
+    - sed -i "s,\(\s*android:versionCode=\"\) *[1-9][0-9]*,\1$versionCode," app/src/main/AndroidManifest.xml
+    - sed -Ei 's@(\s*new Pair<>)@            // aosp testkey\n            new Pair<>("org.fdroid.fdroid", "a40da80a59d170caa950cf15c18c454d47a39b26989d8b640ecd745ba71bf5dc"),\n            new Pair<>("org.fdroid.fdroid.debug", "a40da80a59d170caa950cf15c18c454d47a39b26989d8b640ecd745ba71bf5dc"),\n            // fdroidclient-nightly\n            new Pair<>("org.fdroid.fdroid.debug", "659e1fd284549f70d13fb02c620100e27eeea3420558cce62b0f5d4cf2b77d84"),\1\n@' app/src/main/java/org/fdroid/fdroid/privileged/ClientWhitelist.java
+    - git diff
+
+    # build the APKs!
+    - ./gradlew assembleDebug
+    - fdroid nightly -v
