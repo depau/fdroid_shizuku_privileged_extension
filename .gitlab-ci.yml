@@ -7,10 +7,11 @@ stages:
   before_script:
     - export GRADLE_USER_HOME=$PWD/.gradle
     - export ANDROID_COMPILE_SDK=`sed -n 's,.*compileSdkVersion\s*\([0-9][0-9]*\).*,\1,p' app/build.gradle`
-    - echo y | $ANDROID_HOME/tools/bin/sdkmanager "platforms;android-${ANDROID_COMPILE_SDK}" > /dev/null
     - export ANDROID_BUILD_TOOLS=`sed -n "s,.*buildToolsVersion\s*'\([0-9][0-9.]*\)'.*,\1,p" app/build.gradle`
-    - echo y | $ANDROID_HOME/tools/bin/sdkmanager "build-tools;${ANDROID_BUILD_TOOLS}" > /dev/null
-    - apt-get update && apt-get -y install gnupg
+    - apt-get update && apt-get -y install gnupg python3-argcomplete python3-requests
+    - git clone --depth=1 --branch=0.5.1 https://gitlab.com/fdroid/sdkmanager.git
+    - git -C sdkmanager checkout -B master 0e9b843482124fab502fd1b21ab1ca8e2e4c90c5
+    - ./sdkmanager/sdkmanager.py "build-tools;${ANDROID_BUILD_TOOLS}" "platforms;android-${ANDROID_COMPILE_SDK}"
   after_script:
     # this file changes every time but should not be cached
     - rm -f $GRADLE_USER_HOME/caches/modules-2/modules-2.lock
@@ -62,9 +63,11 @@ build_on_debian:
           android-sdk-platform-23
           gradle-debian-helper
           libgradle-android-plugin-java
-    - wget --no-verbose http://dl.google.com/android/repository/platform-25_r03.zip
-    - unzip -q platform-25_r03.zip
-    - mv android-7.1.1 $ANDROID_HOME/platforms/platform-25
+          python3-argcomplete
+          python3-requests
+    - git clone --depth=1 --branch=0.5.1 https://gitlab.com/fdroid/sdkmanager.git
+    - git -C sdkmanager checkout -B master 0e9b843482124fab502fd1b21ab1ca8e2e4c90c5
+    - ./sdkmanager/sdkmanager.py "platforms;android-25" "extras;android;m2repository"
     - mkdir -p $ANDROID_HOME/licenses/
     - echo '24333f8a63b6825ea9c5514f83c2829b004d1fee'
        > $ANDROID_HOME/licenses/android-sdk-license
