@@ -28,31 +28,38 @@ PERM_DIR="etc/permissions"
 PERM=permissions_org.fdroid.fdroid.privileged.xml
 ADDOND=80-fdroid.sh
 SYSTEM="/system"
+MOUNT_POINT="/system"
+BUILD_VERSION_SDK="$(getprop ro.build.version.sdk)"
+BUILD_VERSION_SDK_INT="${BUILD_VERSION_SDK#*=}"
 
-mount_system() {
-  mount /system
+# Modern devices use /system as root ("/")
+system_as_root=`getprop ro.build.system_root_image`
+if [ "$system_as_root" == "true" ]; then
+  SYSTEM="/system/system"
+fi
 
-  # Modern devices use /system as root ("/")
-  system_as_root=`getprop ro.build.system_root_image`
-  if [ "$system_as_root" == "true" ]; then
-    SYSTEM="/system/system"
-  fi
-}
+# Android 10 (SDK 29) and above use /mnt/system/ and /mnt/system/system
+if [ "${BUILD_VERSION_SDK_INT}" -ge 29 ]; then
+  SYSTEM="/mnt/system/system"
+  MOUNT_POINT="/mnt/system"
+fi
 
 cd /tmp
 mkdir fdroid
 cd fdroid
 unzip -o "$3"
 
-mount_system
+if mountpoint -q "$MOUNT_POINT"; then
+  mount -o remount,rw "$MOUNT_POINT"
+else
+  mount "/dev/block/bootdevice/by-name/system" "$MOUNT_POINT"
+fi
 
 rm -rf "${SYSTEM}/app/FDroid"*
 rm -rf "${SYSTEM}/priv-app/FDroid"*
 rm -rf "${SYSTEM}/app/F-Droid"*
 rm -rf "${SYSTEM}/priv-app/F-Droid"*
 
-BUILD_VERSION_SDK="$(grep -F ro.build.version.sdk ${SYSTEM}/build.prop)"
-BUILD_VERSION_SDK_INT="${BUILD_VERSION_SDK#*=}"
 if [ "${BUILD_VERSION_SDK_INT}" -ge 21 ]
 then
   FPE_DIR="${SYSTEM}/priv-app/${FPE_NAME}"
@@ -89,7 +96,7 @@ chmod 644 ${FDROIDDIR}/${FDROID}
 
 cp ${ADDOND} ${SYSTEM}/addon.d/
 
-umount /system
+umount "$MOUNT_POINT"
 
 echo -n -e 'ui_print done\n' > /proc/self/fd/$2
 echo -n -e 'ui_print\n' > /proc/self/fd/$2
