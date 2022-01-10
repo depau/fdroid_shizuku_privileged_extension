@@ -1,0 +1,3 @@
+* Parandati Android 8.0 Oreo juhtmevaba (OTA) ZIP
+
+* tõlke värskendused

@@ -1,0 +1,5 @@
+* Parandati Android.mk kompileerimine
+
+* Lisati uued keeled: albaania, bengaali, prantsuse, heebrea, hindi, uusnorra, slovaki
+
+* Gradle võib hankida sõltuvusi Debianist
