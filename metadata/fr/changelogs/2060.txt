@@ -1,0 +1,3 @@
+* Complilage reproductible
+
+* Correction de l'OTA survival script

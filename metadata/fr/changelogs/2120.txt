@@ -1,0 +1,3 @@
+* nouvelle methide de l'API : getInstalledPackages() pour arrêter le filtrage d'applications installées
+
+* ajout de nouvelles traductions : bengali vietnamien
