@@ -2,4 +2,4 @@
 
 *Ajout de nouvelles langues : albanais, bengali, français, hébreu, hindi, nynorsk, slovaque
 
-*Autorise gradle à aller chercher des dépendances de Debian
+*Autorise gradle à aller chercher des dépendances dans Debian
