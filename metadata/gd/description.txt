@@ -1,0 +1,21 @@
+An aire: Feumaidh F-Droid pribhleidean root airson an leudachan le pribhleidean
+a stàladh ’na “priv-app” an t-siostaim.
+
+Cleachdaidh https://f-droid.org/packages/org.fdroid.fdroid pribhleidean no ceadan an t-siostaim
+airson aplacaidean a stàladh, ùrachadh is a thoirt air falbh leis fhèin. Chan urrainn ach
+do dh’aplacaidean an t-siostaim na pribhleidean sin fhaighinn.
+
+Seo as adhbhar dhan Leudachan pribhleidean F-Droid – on a tha e ’na aplacaid fa leth
+’s mòran nas lugha, gabhaidh a stàladh ’na aplacaid an t-siostaim is nì e conaltradh
+leis a’ phrìomh aplacaid slighe AIDL IPC.
+
+Bheir seo iomadh buannachd dhuinn:
+
+* Cleachdadh nas lugha dhen diosg air pàirteachadh an t-siostaim
+* Cha doir ùrachaidhean an t-siostaim F-Droid air falbh
+* Tha pròiseas an stàlaidh dhan t-siostam le root nas sàbhailte
+
+An àite an togail seo, mholamaid gun stàlaich thu faidhle ùrachaidh ZIP
+“Over-The-Air” (OTA) air a bheil
+https://f-droid.org/packages/org.fdroid.fdroid.privileged.ota.  Seo far an ùraich thu an
+Leudachan pribhleidean F-Droid nuair a chaidh a stàladh le OTA ZIP.
