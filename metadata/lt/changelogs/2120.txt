@@ -1,0 +1,3 @@
+* naujas API metodas: getInstalledPackages(), skirtas nefiltruotam įdiegtų programų sąrašui
+
+* pridėti nauji vertimai: bengalų vietnamiečių

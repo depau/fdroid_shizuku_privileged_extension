@@ -1,0 +1,5 @@
+* Ištaisytos „Android.mk“ versijos
+
+* Pridėtos naujos kalbos: albanų, bengalų, prancūzų, hebrajų, hindi, norvegų, slovakų
+
+* Leidimas gradle gauti priklausomybes iš „Debian“
