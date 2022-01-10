@@ -1,1 +1,1 @@
-Perbaikan laporan dan masalah pemasangan/pencopotan pada Android 10/Q (#47)
+Perbaikan laporan dan masalah pemasangan/menghapus pada Android 10/Q (#47)
