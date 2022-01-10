@@ -6,8 +6,8 @@ Tiucele ekzistas la privilegia aldonaĵo - kiel memstara eta aplikaĵo ĝi povas
 
 Jen kelkaj avantaĝoj:
 
-* malpliigita uzo de sistema subdisko
-* sistemaj ĝisdatigo ne forigas F-Droid
-* instalado al sistemo per ĉefuzanto estas pli sekura
+• malpliigita uzo de la sistema subdisko
+• sistemaj ĝisdatigoj ne forigas F-Droid
+• instalado al sistemo per ĉefuzanto estas pli sekura
 
 Anstataŭ tiu ĉi kompilaĵo la plejparto da uzantoj probable volus instali la OTA‑pakaĵon https://f-droid.org/packages/org.fdroid.fdroid.privileged.ota kiel dosiero .zip. Tiu ĉi pakaĵo estas por ĝisdatigi la privilegian aldonaĵon post instali ĝin per la OTA‑pakaĵo.
