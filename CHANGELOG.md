@@ -1,3 +1,9 @@
+### 0.2.13 (2022-01-11)
+
+* ota.zip: Fix update-binary to work smoothly on Android 10 and later
+
+* new translations: Catalan Croatian Gaelic Italian Tamil
+
 ### 0.2.12 (2021-03-08)
 
 * new API method: getInstalledPackages() for unfiltered list of installed apps
