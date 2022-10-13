@@ -1,5 +1,0 @@
-*Fix per Android.mk builds
-
-*Aggiunto le lingue nuove: Albanese, Bengalese, Francese, Ebraico, Hindi, Nynorsk, Slovacco
-
-*Consentire a gradle di recuperare le dipendenze da Debian

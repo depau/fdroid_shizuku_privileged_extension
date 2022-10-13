@@ -1,3 +1,0 @@
-* Bætt við nýjum tungumálum: Tékkneska, ungverska, úygur
-
-* bætt við stuðningi fyrir hvítvottaðar útgáfur (whitelabel builds)

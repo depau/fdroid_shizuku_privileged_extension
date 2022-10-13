@@ -1,3 +1,0 @@
-* Reproduzierbarer Build
-
-* Korrigiertes OTA-Survival-Skript

@@ -1,5 +1,0 @@
-* Korrigierte Android.mk Builds
-
-* Neue Sprachen hinzugefügt: Albanisch, Bengali, Französisch, Hebräisch, Hindi, Nynorsk, Slowakisch
-
-* Gradle gestatten, Abhängigkeiten aus Debian zu beziehen

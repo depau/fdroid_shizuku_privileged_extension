@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <string name="app_name">F-Droid Privileged Extension</string>
-
+    <string name="app_name">F-Droid Shizuku Privileged Extension</string>
+    <string name="permission_required">Shizuku permission is required</string>
+    <string name="permission_required_detail">Tap to grant the required permission and allow F-Droid to install apps</string>
+    <string name="permission_rationale">This app needs the Shizuku permission to allow F-Droid to install apps without requiring interaction.</string>
+    <string name="permission_granted">Privileged permission granted, you may use F-Droid</string>
 </resources>

@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Estens. privilegiata F-Droid</string>
+    <string name="app_name">Estens. privilegiata F-Droid Shizuku</string>
+    <string name="permission_required">Permesso Shizuku richiesto</string>
+    <string name="permission_required_detail">Tocca per richiedere il permesso Shizuku e consentire a F-Droid di installare applicazioni</string>
+    <string name="permission_rationale">Questa app necessita del permesso Shizuku per consentire a F-Droid di installare applicazioni senza interazione.</string>
+    <string name="permission_granted">Permessi privilegiati consentiti, puoi usare F-Droid</string>
 </resources>

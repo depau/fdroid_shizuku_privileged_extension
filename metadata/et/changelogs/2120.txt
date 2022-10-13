@@ -1,3 +1,0 @@
-* uus API meetod: getInstalledPackages(), mis tagastab loendi paigaldatud rakendustest
-
-* lisati uued tõlked: bengali, vietnami

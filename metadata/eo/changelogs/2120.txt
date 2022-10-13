@@ -1,3 +1,0 @@
-* nova API-metodo: getInstalledPackages() por nefiltrita listo de instalitaj aplikaĵoj
-
-* novaj tradukoj: bengala kaj vjetnama

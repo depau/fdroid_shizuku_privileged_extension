@@ -1,3 +1,0 @@
-* phương pháp API mới: getInstalledPackages() để lấy danh sách ứng dụng đã cài đặt không được lọc
-
-* thêm bản dịch mới: Bengali Tiếng Việt

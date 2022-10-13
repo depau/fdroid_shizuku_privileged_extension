@@ -1,3 +1,0 @@
-* Odtwarzalna kompilacja
-
-* Poprawiono skrypt przetrwania OTA

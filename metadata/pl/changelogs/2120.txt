@@ -1,3 +1,0 @@
-* nowa metoda API: getInstalledPackages() zwraca listę zainstalowanych aplikacji
-
-* nowe tłumaczenia: bengalski, wietnamski

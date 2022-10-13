@@ -1,3 +1,0 @@
-* Montime të riprodhueshme
-
-* U ndreq “OTA survival script”

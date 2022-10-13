@@ -1,3 +1,0 @@
-* Behobenes OTA-ZIP für Android 8.0 Oreo
-
-* Aktualisierte Übersetzungen

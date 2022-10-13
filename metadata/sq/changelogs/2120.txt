@@ -1,3 +1,0 @@
-* metodë e re API: getInstalledPackages() për listë të pafiltruar aplikacionesh të instaluar
-
-* shtim përkthimesh të reja: Vietnamishte Bengali

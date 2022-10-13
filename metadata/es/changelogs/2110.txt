@@ -1,1 +1,0 @@
-Corregido el problema de instalación/desinstalación en Adnroid 10/Q (#47)

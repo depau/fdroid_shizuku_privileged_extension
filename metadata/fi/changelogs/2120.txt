@@ -1,3 +1,0 @@
-* uusi API-metodi: getInstalledPackages() antaa suodattamattoman listan asennetuista sovelluksista
-
-* uudet käännökset: bengali ja vietnam

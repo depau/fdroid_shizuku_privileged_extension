@@ -1,22 +1,59 @@
+# F-Droid Shizuku Privileged Extension
+
+This is a port of the
+official [F-Droid Privileged Extension](https://gitlab.com/fdroid/privileged-extension) to
+[Shizuku](https://shizuku.rikka.app/), an app that makes it easy to grant apps ADB permissions.
+
+When the app is installed, F-Droid will automatically detect it and use it to perform
+non-interactive app installations.
+
+## Android 13 gotchas
+
+Android 13 doesn't allow new apps to send notifications, so the app can't ask you to grant the
+Shizuku permission when needed.
+
+To work around this, make sure you open the app once and grant the permission manually.
+
+## License
+
+This app is a fork of the
+official [F-Droid Privileged Extension](https://gitlab.com/fdroid/privileged-extension), which is
+licensed under the Apache License, Version 2.0.
+
+Some parts of the codebase are based on
+the [Shizuku API demo app](https://github.com/RikkaApps/Shizuku-API/tree/master/demo), which is
+licensed under the MIT license.
+
+----
+
+Here's relevant parts of the original README
+
 # F-Droid Privileged Extension
 
-This enables F-Droid to install and delete apps without needing "Unknown Sources" to be enabled (e.g. just like Google Play does).
-It also enables F-Droid to install updates in the background without the user having to click "install".
+This enables F-Droid to install and delete apps without needing "Unknown Sources" to be enabled (
+e.g. just like Google Play does). It also enables F-Droid to install updates in the background
+without the user having to click "install".
 
-When F-Droid is installed as a normal Android app, installing, updating, and removing apps can only be done by sending requests to the Android operating system.
-F-Droid cannot execute these operations itself. Android shows a screen on every install/update/delete to confirm this is what the user actually wants.
-This is a security feature of Android to prevent apps or websites from installing malware without user intervention.
+When F-Droid is installed as a normal Android app, installing, updating, and removing apps can only
+be done by sending requests to the Android operating system. F-Droid cannot execute these operations
+itself. Android shows a screen on every install/update/delete to confirm this is what the user
+actually wants. This is a security feature of Android to prevent apps or websites from installing
+malware without user intervention.
 
-F-Droid Privileged Extension grants elevated permissions to F-Droid, which allows it to do installs and uninstalls without needing user approval.
-It gives only F-Droid access to its install and delete commands.
-In order for F-Droid Privileged Extension to get these "privileged" powers, it must be installed as part of your system by either being flashed as an _update.zip_ or by being built into an Android device or ROM.
-On Android 4 and older, it can be installed directly if you have root on your device.
-
+F-Droid Privileged Extension grants elevated permissions to F-Droid, which allows it to do installs
+and uninstalls without needing user approval. It gives only F-Droid access to its install and delete
+commands. In order for F-Droid Privileged Extension to get these "privileged" powers, it must be
+installed as part of your system by either being flashed as an _update.zip_ or by being built into
+an Android device or ROM. On Android 4 and older, it can be installed directly if you have root on
+your device.
 
 ## Design
 
-F-Droid Privileged Extension is designed on the principals of "least privilege", so that elevated powers are only granted where they are absolutely needed, and those powers are limited as much as possible.
-Therefore, the code that runs with increased powers is very small and easy to audit.  This is in contrast to how typical built-in app stores are granted all of the privileges available to a "system priv-app". 
+F-Droid Privileged Extension is designed on the principals of "least privilege", so that elevated
+powers are only granted where they are absolutely needed, and those powers are limited as much as
+possible. Therefore, the code that runs with increased powers is very small and easy to audit. This
+is in contrast to how typical built-in app stores are granted all of the privileges available to a "
+system priv-app".
 
 Advantages of this design:
 
@@ -24,81 +61,6 @@ Advantages of this design:
 * Can easily be built into devices and ROMs
 * Reduced disk usage in the system partition
 * System updates don't remove F-Droid
-
-
-## How do I install it on my device?
-
-The best way to install F-Droid Privileged Extension is to flash the
-[_OTA update ZIP_](https://f-droid.org/packages/org.fdroid.fdroid.privileged.ota)
-file using the standard mechanism for flashing updates to the
-ROM. This requires the device have an unlocked bootloader. A custom
-Recovery firmware is recommended. This is the same procedure as
-flashing "gapps" after flashing a ROM onto your device.
-
-Installing the F-Droid Privileged Extension directly from the F-Droid app requires root access and is only possible on Android versions older than 5.0.
-It is not possible on Android 5.1, 6.0, and newer.
-To install the extension, open the settings inside the F-Droid app, enable "Expert mode", and then enable "Privileged Extension".
-It will lead you to the extension app, which will guide you through the installation process.
-
-There are potential risks to rooting and unlocking your device, including:
-
-* often requires using random, unverified software
-* bootloader unlock often voids warranty
-* official updates might stop working with an unlocked bootloader
-* other functions may break (like Android Pay, DRM-protected content playing, camera enhancements, etc.)
-
-
-## How do I build it into my ROM?
-
-F-Droid Privileged Extension is designed to be built into ROMs and signed by the ROM key.
-F-Droid only gets permissions via F-Droid Privileged Extension's internal key check, not via having a matching signing key or via `"signature" protectionLevel`.
-This git repo includes an [Android.mk](https://gitlab.com/fdroid/privileged-extension/blob/master/app/src/main/Android.mk) so it can be directly included via `repo`.
-Add `F-DroidPrivilegedExtension` to the `PRODUCT_PACKAGES` list to include it in the system image, and use a `repo` manifest like this:
-
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<manifest>
-
-  <remote name="fdroid" fetch="https://gitlab.com/fdroid/" />
-  <project path="packages/apps/F-DroidPrivilegedExtension"
-           name="privileged-extension.git" remote="fdroid"
-           revision="refs/tags/0.2.13" />
-
-</manifest>
-```
-
-By default, F-Droid Privileged Extension trusts only the official F-Droid builds, and we recommend that https://f-droid.org/F-Droid.apk is also included in the ROM.
-You can verify the binaries by using both the APK signature and the PGP key: https://f-droid.org/F-Droid.apk.asc
-
-APK signing certificate SHA-256 fingerprint:
-```
-43238d512c1e5eb2d6569f4a3afbf5523418b82e0a3ed1552770abb9a9c9ccab
-```
-
-PGP signing key fingerprint:
-```
-37D2 C987 89D8 3119 4839  4E3E 41E7 044E 1DBA 2E89
-```
-
-More documentation can be found here:
-https://f-droid.org/wiki/page/Release_Channels_and_Signing_Keys
-
-
-## Direct download
-
-F-Droid Privileged Extension needs to be flashed as an OTA update on
-all Android versions since 5.0 in order to function.  The official,
-signed ZIP package and PGP signature are available for download from
-f-droid.org:
-
-* https://f-droid.org/packages/org.fdroid.fdroid.privileged.ota
-
-It is also possible to download the bare APK, though this is not the
-recommended way to install it for the first time.  It is provided to
-update the extension after the OTA update ZIP has been flashed.
-
-* https://f-droid.org/packages/org.fdroid.fdroid.privileged
-
 
 ## Building with Gradle
 
@@ -121,7 +83,6 @@ In order to have final, signed release versions that are ready for installing, a
     key.alias=release
     key.alias.password=mysecurekeypw
 
-
 ## Supporting a different app
 
 It is possible to use Privileged Extension with any app.  To do that,
@@ -139,7 +100,6 @@ $ sed -i "s,F-Droid,$AppName,g" \
     create_ota.sh app/build.gradle app/src/main/scripts/* \
     app/src/main/res/values*/strings.xml
 ```
-
 
 ## Testing in the Emulator
 
@@ -194,7 +154,6 @@ $ mv system.img.new /path/to/system.img
 Upon booting the emulator, it should have the Privileged Extension
 installed.  It is also possible to install the F-Droid app this way,
 or via the normal methods.
-
 
 ## via _adb_ on _android-19_ and older
 

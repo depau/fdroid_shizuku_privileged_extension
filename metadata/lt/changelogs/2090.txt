@@ -1,3 +1,0 @@
-* Pridėtos naujos kalbos: čekų, vengrų, uigūrų
-
-* pridėtas palaikymas „whitelabel“ kūriniams

@@ -1,3 +1,0 @@
-* o nouă metodă API: getInstalledPackages() pentru lista nefiltrată a aplicațiilor instalate
-
-* adăugarea de noi traduceri: Bengali Vietnameză

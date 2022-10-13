@@ -1,3 +1,0 @@
-* Ajout de nouvelles langues : tchèque, hongrois, Ouïghour
-
-* Ajout de la prise en charge des versions whitelabel

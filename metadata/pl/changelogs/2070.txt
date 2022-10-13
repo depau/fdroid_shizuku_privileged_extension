@@ -1,3 +1,0 @@
-* Naprawiono OTA ZIP dla systemu Android 8.0 Oreo
-
-* aktualizacje tłumaczeń

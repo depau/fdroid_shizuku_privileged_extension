@@ -1,3 +1,0 @@
-* Nye omsetjingar: tsjekkisk, ungarsk og uigurisk
-
-* Støtte for omprofilerte utgåver

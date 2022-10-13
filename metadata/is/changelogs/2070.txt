@@ -1,3 +1,0 @@
-* Lagað OTA ZIP fyrir Android 8.0 Oreo
-
-* uppfærslur þýðinga

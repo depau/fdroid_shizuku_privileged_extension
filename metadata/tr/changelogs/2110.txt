@@ -1,1 +1,0 @@
-Android 10/Q'da kurma/kaldırma sorunu (#47) düzeltildi

@@ -1,0 +1,20 @@
+{
+  "version": 3,
+  "artifactType": {
+    "type": "APK",
+    "kind": "Directory"
+  },
+  "applicationId": "org.fdroid.fdroid.privileged",
+  "variantName": "debug",
+  "elements": [
+    {
+      "type": "SINGLE",
+      "filters": [],
+      "attributes": [],
+      "versionCode": 2130,
+      "versionName": "0.2.13-1-g517a071",
+      "outputFile": "F-DroidShizukuPrivilegedExtension-debug.apk"
+    }
+  ],
+  "elementType": "File"
+}

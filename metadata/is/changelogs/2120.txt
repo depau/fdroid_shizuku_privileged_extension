@@ -1,3 +1,0 @@
-* ný aðferð í API: getInstalledPackages() ftil að sjá ósíaðan lista uppsettra forrita
-
-* bætt við nýjum þýðingum: bengalska, víetnamska

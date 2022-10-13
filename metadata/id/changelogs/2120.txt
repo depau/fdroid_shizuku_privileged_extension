@@ -1,3 +1,0 @@
-* metode API baru: getInstalledPackages() untuk daftar aplikasi yang diinstal tanpa filter
-
-* Penambahkan terjemahan baru: Bengali Vietnam

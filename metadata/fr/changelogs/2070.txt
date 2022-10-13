@@ -1,3 +1,0 @@
-* Correction de l'OTA ZIP pour Android 8.0 Oreo
-
-* Mise à jour des traductions

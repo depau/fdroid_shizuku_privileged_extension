@@ -1,3 +1,0 @@
-* Memperbaiki ZIP OTA untuk Android Oreo 8.0
-
-* pembaruan terjemahan

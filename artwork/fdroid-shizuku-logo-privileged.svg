@@ -1,0 +1,28 @@
+<svg version="1.1" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <filter id="filter4327" x="-.021789" y="-.02671" width="1.0436" height="1.0534" color-interpolation-filters="sRGB">
+   <feGaussianBlur stdDeviation="0.345"/>
+  </filter>
+  <radialGradient id="radialGradient4339" cx="24" cy="1034.9" r="19" gradientTransform="matrix(1 0 0 .81579 0 183.63)" gradientUnits="userSpaceOnUse">
+   <stop stop-color="#fff" stop-opacity=".098039" offset="0"/>
+   <stop stop-color="#fff" stop-opacity="0" offset="1"/>
+  </radialGradient>
+ </defs>
+ <g transform="translate(0 -1004.4)">
+  <path d="m8 1018.1h32c1.662 0 3 1.338 3 3v20c0 1.662-1.338 3-3 3h-32c-1.662 0-3-1.338-3-3v-20c0-1.662 1.338-3 3-3zm3-5h8.5c0.831 0 1.5 0.7805 1.5 1.75v3.5c0 0.9695-0.669 1.75-1.5 1.75h-8.5c-0.831 0-1.5-0.7805-1.5-1.75v-3.5c0-0.9695 0.669-1.75 1.5-1.75zm18 0h8.5c0.831 0 1.5 0.7805 1.5 1.75v3.5c0 0.9695-0.669 1.75-1.5 1.75h-8.5c-0.831 0-1.5-0.7805-1.5-1.75v-3.5c0-0.9695 0.669-1.75 1.5-1.75z" fill="#263237" fill-opacity=".4" filter="url(#filter4327)"/>
+  <g>
+   <rect x="27.5" y="1012.4" width="11.5" height="6" rx="1.5" ry="1.5" fill="#4791db"/>
+   <rect x="27.5" y="1013.4" width="11.5" height="6" rx="1.5" ry="1.5" fill="#1976d2"/>
+   <rect x="9.5" y="1012.4" width="11.5" height="6" rx="1.5" ry="1.5" fill="#4791db"/>
+   <rect x="9.5" y="1013.4" width="11.5" height="6" rx="1.5" ry="1.5" fill="#1976d2"/>
+   <rect x="5" y="1017.4" width="38" height="26" rx="3" ry="3" fill="#1976d2"/>
+  </g>
+  <rect x="5" y="1030.4" width="38" height="13" rx="3" ry="3" fill="#263238" fill-opacity=".2"/>
+  <rect x="5" y="1017.4" width="38" height="13" rx="3" ry="3" fill="#fff" fill-opacity=".2"/>
+  <g>
+   <rect x="5" y="1018.4" width="38" height="24" rx="3" ry="2.7692" fill="#1976d2"/>
+   <path transform="translate(6.4869 1011.9)" d="m22.129 26.448c-0.55971 0.32315-8.6731 0.32315-9.2329-1e-6 -0.55971-0.32315-4.6164-7.3496-4.6164-7.9959 1e-7 -0.6463 4.0567-7.6727 4.6164-7.9959 0.55971-0.32315 8.6731-0.32315 9.2329 0 0.55971 0.32315 4.6164 7.3496 4.6164 7.9959 0 0.6463-4.0567 7.6727-4.6164 7.9959z" fill="#0d47a1" stroke-linecap="round" stroke-linejoin="round" stroke-width="6.705"/>
+   <path d="m8 1017.4h32c1.662 0 3 1.338 3 3v20c0 1.662-1.338 3-3 3h-32c-1.662 0-3-1.338-3-3v-20c0-1.662 1.338-3 3-3zm3-5h8.5c0.831 0 1.5 0.7805 1.5 1.75v3.5c0 0.9695-0.669 1.75-1.5 1.75h-8.5c-0.831 0-1.5-0.7805-1.5-1.75v-3.5c0-0.9695 0.669-1.75 1.5-1.75zm18 0h8.5c0.831 0 1.5 0.7805 1.5 1.75v3.5c0 0.9695-0.669 1.75-1.5 1.75h-8.5c-0.831 0-1.5-0.7805-1.5-1.75v-3.5c0-0.9695 0.669-1.75 1.5-1.75z" fill="url(#radialGradient4339)"/>
+  </g>
+ </g>
+</svg>

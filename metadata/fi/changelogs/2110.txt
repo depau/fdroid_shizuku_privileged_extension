@@ -1,1 +1,0 @@
-Korjattu asenna/poista ongelma Android 10:ssä (#47)

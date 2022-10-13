@@ -1,3 +1,0 @@
-* Lisätty uusia kieliä: tšekki, unkari, uiguuri
-
-* Tuki lisätty Whitelabel-versioille

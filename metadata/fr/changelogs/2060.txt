@@ -1,3 +1,0 @@
-* Build reproductible
-
-* Correction du script OTA survival

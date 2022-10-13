@@ -1,3 +1,0 @@
-* Korratav ehitamine
-
-* Parandati OTA ellujäämise skript

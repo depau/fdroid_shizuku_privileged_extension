@@ -1,3 +1,0 @@
-* Adicionado novos idiomas: Checo, Húngaro, Uygur
-
-* Adicionado suporte para contruções whitelabel

@@ -1,3 +1,0 @@
-* Aggiunte nuove lingue: Ceco, Ungherese, Uiguro
-
-* Aggiunto il supporto per build whitelabel

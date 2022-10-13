@@ -1,3 +1,0 @@
-* Build riproducibile
-
-* Corretto script di sopravvivenza dell'OTA

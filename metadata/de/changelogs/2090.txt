@@ -1,3 +1,0 @@
-* Neue Sprachen: Tschechisch, Ungarisch, Uigurisch
-
-* Unterstützung von Whitelabel Builds ergänzt

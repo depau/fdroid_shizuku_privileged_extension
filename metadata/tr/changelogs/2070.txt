@@ -1,3 +1,0 @@
-* Android 8.0 Oreo için OTA ZIP dosyası düzeltildi
-
-* çeviri güncellemeleri

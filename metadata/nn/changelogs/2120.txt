@@ -1,3 +1,0 @@
-* Ny API-metode: getInstalledPackages() for ufiltrert liste over installerte appar
-
-* Nye omsetjingar: bengalsk og vietnamesisk

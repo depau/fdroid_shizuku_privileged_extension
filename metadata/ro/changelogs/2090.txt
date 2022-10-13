@@ -1,3 +1,0 @@
-* Au fost adăugate noi limbi: Cehă, maghiară, uygur
-
-* a fost adăugat suport pentru construcțiile whitelabel

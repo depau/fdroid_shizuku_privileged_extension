@@ -1,3 +1,0 @@
-* La til nye språk: Tsjekkisk, ungarsk, uigursk
-
-* la til støtte for hvitmerke-byggversjoner

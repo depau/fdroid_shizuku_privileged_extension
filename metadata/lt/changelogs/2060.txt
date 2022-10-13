@@ -1,3 +1,0 @@
-* Atkartojama pirminio kodo versija
-
-* Ištaisytas OTA išgyvenimo scenarijus

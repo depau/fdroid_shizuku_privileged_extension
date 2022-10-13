@@ -1,3 +1,0 @@
-* Penambahan bahasa baru : Ceko, Hungaria, Uygur
-
-* penambahan dukungan untuk build labelputih

@@ -1,5 +1,0 @@
-* Perbaikan build Android.mk
-
-* Penambahkan bahasa baru: Albania, Bengali, Perancis, Ibrani, Hindi, Nynorsk, Slovakia
-
-* Mengizinkan gradle untuk mengambil berkas terkait/depend dari Debian

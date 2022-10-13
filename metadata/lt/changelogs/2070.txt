@@ -1,3 +1,0 @@
-* Ištaisytas OTA ZIP, skirtas „Android 8.0 Oreo“
-
-* vertimo atnaujinimai

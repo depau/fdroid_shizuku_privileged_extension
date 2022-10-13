@@ -1,1 +1,0 @@
-Layanan untuk mengizinkan F-Droid secara aman melakukan pemasangan dan pembaruan aplikasi

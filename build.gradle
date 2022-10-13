@@ -1,10 +1,28 @@
 buildscript {
+    ext {
+        kotlin_version = '1.7.20'
+    }
     repositories {
         maven { url 'file:///usr/share/maven-repo' }
-        jcenter()
+        maven { url 'https://jitpack.io' }
+        mavenCentral()
+        google()
     }
     dependencies {
         // 2.2.2 is the version that is included in Debian/stretch
-        classpath 'com.android.tools.build:gradle:2.2.2'
+        classpath 'com.android.tools.build:gradle:7.3.1'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
+}
+
+allprojects {
+    repositories {
+        mavenCentral()
+        google()
+        maven { url "https://jitpack.io" }
+    }
+}
+
+repositories {
+    google()
 }

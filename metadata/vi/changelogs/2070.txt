@@ -1,3 +1,0 @@
-* Sửa tệp ZIP OTA cho Android 8.0 Oreo
-
-* cập nhật bản dịch

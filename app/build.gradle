@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'checkstyle'
+apply plugin: 'org.jetbrains.kotlin.android'
 
 /* gets the version name from the latest Git tag, stripping the leading v off */
 def getVersionName = { ->
@@ -22,62 +23,65 @@ gradle.allprojects {
     }
 }
 
-repositories {
-    jcenter()
-}
-
 dependencies {
-    testCompile 'junit:junit:4.12'
+    implementation "androidx.core:core-ktx:1.9.0"
 
-    androidTestCompile 'com.android.support:support-annotations:25.3.0'
-    androidTestCompile 'com.android.support.test:runner:0.5'
-    androidTestCompile 'com.android.support.test:rules:0.5'
+    def shizuku_version = '12.1.0'
+    implementation "dev.rikka.shizuku:api:$shizuku_version"
+    implementation "dev.rikka.shizuku:provider:$shizuku_version"
+    implementation 'org.lsposed.hiddenapibypass:hiddenapibypass:4.3'
+    implementation 'com.github.Depau:kotlet-android:v0.2.4'
+
+    testImplementation 'junit:junit:4.12'
+    androidTestUtil 'androidx.test:orchestrator:1.4.1'
+    androidTestImplementation 'androidx.test:runner:1.4.0'
 }
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion '24.0.0'
+    compileSdkVersion 33
 
     defaultConfig {
-        archivesBaseName = "F-DroidPrivilegedExtension"
+        archivesBaseName = "F-DroidShizukuPrivilegedExtension"
         versionName getVersionName()
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunnerArguments clearPackageData: 'true'
 
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        minSdkVersion 24
+        targetSdkVersion 33
+    }
+
+    testOptions {
+        execution 'ANDROIDX_TEST_ORCHESTRATOR'
     }
 
     compileOptions {
         compileOptions.encoding = "UTF-8"
 
-        // Use Java 1.7, requires minSdk 8
-        sourceCompatibility JavaVersion.VERSION_1_7
-        targetCompatibility JavaVersion.VERSION_1_7
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 
-    aaptOptions {
-        cruncherEnabled = false
-    }
 
     buildTypes {
         all {
             // Keep IPackageInstallObserver and IPackageDeleteObserver
             minifyEnabled false
-            useProguard false
             shrinkResources false
         }
     }
 
-    lintOptions {
-        checkReleaseBuilds false
-        abortOnError true
-
-        htmlReport true
-        xmlReport false
-        textReport false
-
-        lintConfig file("lint.xml")
-    }
 
     File signFile = rootProject.file('signing.properties')
+    lint {
+        abortOnError true
+        checkReleaseBuilds false
+        htmlReport true
+        lintConfig file('lint.xml')
+        textReport false
+        xmlReport false
+    }
+    namespace 'org.fdroid.fdroid.privileged'
+    testNamespace 'org.fdroid.fdroid.privileged.tests'
     if (signFile.exists()) {
         Properties properties = new Properties()
         properties.load(new FileInputStream(signFile))

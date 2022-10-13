@@ -1,3 +1,0 @@
-* neue API-Methode: getInstalledPackages() für eine ungefilterte Liste installierter Apps
-
-* neue Übersetzungen: Bengali, Vietnamesisch
