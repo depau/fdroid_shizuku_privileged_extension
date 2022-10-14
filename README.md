@@ -7,6 +7,12 @@ official [F-Droid Privileged Extension](https://gitlab.com/fdroid/privileged-ext
 When the app is installed, F-Droid will automatically detect it and use it to perform
 non-interactive app installations.
 
+## Installation
+
+Use the F-Droid repo: https://depau.github.io/fdroid_shizuku_privileged_extension/fdroid/repo/
+
+Make sure you open the app after installing it, so it can request the required permissions.
+
 ## Android 13 gotchas
 
 Android 13 doesn't allow new apps to send notifications, so the app can't ask you to grant the
